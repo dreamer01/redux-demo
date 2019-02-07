@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+
+import { connect } from "react-redux";
+import { addUser, deleteUser } from "./store/actions";
+
 import "./App.css";
 
 class App extends Component {
@@ -26,16 +30,14 @@ class App extends Component {
   };
 
   addUser = () => {
-    this.setState(prevState => ({
-      users: [...prevState.users, this.state.newUser]
-    }));
+    this.props.addUser(this.state.newUser);
   };
 
-  deleteUser = userName => {
-    this.setState(prevState => ({
-      users: prevState.users.filter(user => user !== userName)
-    }));
-  };
+  // deleteUser = userName => {
+  //   this.setState(prevState => ({
+  //     users: prevState.users.filter(user => user !== userName)
+  //   }));
+  // };
 
   render() {
     return (
@@ -57,11 +59,22 @@ class App extends Component {
           />
         </div>
         <div className="user-list">
-          {this.state.users && this.state.users.map(this.renderUser)}
+          {this.props.users && this.props.users.map(this.renderUser)}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  users: state.users
+});
+
+const mapDispatchToProps = dispatch => ({
+  addUser: user => dispatch(addUser(user))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
