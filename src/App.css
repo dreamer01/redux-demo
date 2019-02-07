@@ -1,0 +1,37 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  min-height: 100vh;
+  margin: auto;
+  background-color: beige;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aquamarine;
+  min-width: 400px;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.input-text {
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
+
+.btn {
+  background-color: dodgerblue;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
